@@ -1,8 +1,9 @@
+# this code actually works now
 import cv2 as cv
 import numpy as np
 from matplotlib import pyplot as plt
 
-class WienerFilter():
+class WeinerFilter():
   def __init__(self, input, filter_size):
     self.input = input
     self.filter_size = filter_size
@@ -24,8 +25,8 @@ class WienerFilter():
     avgVarianceMat = cv.reduce(variances, 1, cv.REDUCE_SUM, -1)
     avgVarianceMat = cv.reduce(avgVarianceMat, 0, cv.REDUCE_SUM, -1)
 
-    noiseVar = np.asscalar(avgVarianceMat/self.input.shape[0] * self.input.shape[1])
-    
+    noiseVar = (avgVarianceMat/self.input.shape[0] * self.input.shape[1]).item()
+
     y = np.zeros(self.input.shape)
     for row in range(self.input.shape[0]):
       for col in range(self.input.shape[1]):
