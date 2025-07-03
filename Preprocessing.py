@@ -1,4 +1,4 @@
-# this code actually works now 
+# this code actually works nowe
 import os
 import cv2 as cv
 from PIL import Image
